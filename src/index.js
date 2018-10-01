@@ -6,6 +6,8 @@ import registerServiceWorker from './registerServiceWorker';
 import 'bootstrap/dist/css/bootstrap.css'
 import Login from './components/Login/login'
 import CadastroAcademia from './components/Cadastro-Academia/cadastro-academia'
+import CadastroCliente from './components/Cadastro-Cliente/cadastro-cliente'
 
-ReactDOM.render(<CadastroAcademia />, document.getElementById('root'));
+
+ReactDOM.render(<CadastroCliente />, document.getElementById('root'));
 registerServiceWorker();
