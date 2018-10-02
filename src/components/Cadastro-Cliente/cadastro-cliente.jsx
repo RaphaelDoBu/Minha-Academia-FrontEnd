@@ -4,9 +4,10 @@ import { Col, Row, Button, Form, FormGroup, Label, Input, FormText } from 'react
 class CadastroCliente extends Component {
   render() {
     return (
-        <Form horizontal>
-            <h4>Dados Pessoal</h4>
-            <Row form>
+        <Form center>
+            <Col md={10}>
+                <h4>Dados Pessoal</h4>
+                <Row form>
                 <Col md={7}>
                     <FormGroup>
                     <Label for="nomeCliente">Nome do(a) Cliente</Label>
@@ -65,6 +66,7 @@ class CadastroCliente extends Component {
                     </Col>
             </Row>
             <Button>Sign in</Button>
+            </Col>
         </Form>
   
     );
