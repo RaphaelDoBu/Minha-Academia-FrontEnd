@@ -38,7 +38,8 @@ class Login extends Component {
                 <Route path="/inscreva-se" component={CadastroAcademia} />
               </Switch>
             </div>
-          </BrowserRouter>
+        </BrowserRouter>
+
       </Form>
       
       
