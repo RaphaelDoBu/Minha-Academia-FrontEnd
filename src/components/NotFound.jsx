@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, FormGroup, Col, Label, Input, Button } from 'reactstrap';
+import { Col, Button } from 'reactstrap';
 import { BrowserRouter, NavLink, Switch, Route } from 'react-router-dom'; 
 import Login from '../components/Login/login'
 
@@ -11,7 +11,6 @@ class NotFound extends Component {
           <h2>Page not found</h2>
           <NavLink to="/login"><Button>Inscrever-se</Button></NavLink>
           </Col>
-        
         
         
             <BrowserRouter>
