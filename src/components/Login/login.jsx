@@ -17,6 +17,7 @@ class Login extends Component {
                 success: undefined,
                 message: undefined
             },
+            
             logged: false,
             users: undefined,
             error: undefined
@@ -25,43 +26,42 @@ class Login extends Component {
 
     static displayName = 'ui-LoginForm'
 
-    componentDidMount() {
-        this.verifytoken();
-    }
+    // componentDidMount() {
+    //     this.verifytoken();
+    // }
 
-    verifytoken() {
-        let url = 'http://localhost:3005/auth/verifytoken';
-        let token = localStorage.getItem('DD101_TOKEN');
+    // verifytoken() {
+    //     let url = 'http://localhost:3005/auth/verifytoken';
+    //     let token = localStorage.getItem('DD101_TOKEN');
 
-        if (!token) {
-            this.setState({
-                error: 'No token defined. Please Login.'
-            })
-            return
-        }
+    //     if (!token) {
+    //         this.setState({
+    //             error: 'No token defined. Please Login.'
+    //         })
+    //     }
 
-        fetch(url, {
-            method: "GET",
-            body: undefined,
-            headers: {
-                "Content-Type": "application/json",
-                "authorization": `Bearer ${token}`
-            }
-        }).then(response => response.json())
-            .then(responseJson => {
-                if (responseJson.success) {
-                    this.setState({
-                        logged: responseJson.success,
-                        error: undefined
-                    })
-                    this.loadUsers()
-                } else {
-                    this.setState({
-                        error: responseJson.error.message
-                    })
-                }
-            }).catch(err => this.setState({ error: err }));
-    }
+    //     fetch(url, {
+    //         method: "GET",
+    //         body: undefined,
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //             "authorization": `Bearer ${token}`
+    //         }
+    //     }).then(response => response.json())
+    //         .then(responseJson => {
+    //             if (responseJson.success) {
+    //                 this.setState({
+    //                     logged: responseJson.success,
+    //                     error: undefined
+    //                 })
+    //                 this.loadUsers()
+    //             } else {
+    //                 this.setState({
+    //                     error: responseJson.error.message
+    //                 })
+    //             }
+    //         }).catch(err => this.setState({ error: err }));
+    // }
 
     loadUsers() {
         let url = 'http://localhost:3005/users/listusers';
@@ -167,13 +167,17 @@ class Login extends Component {
             }
         }).then(response => response.json())
             .then(responseJson => {
+                console.log(responseJson.message)
                 if (responseJson.message === 'User logged with success') {
                     this.props.history.push("/academia");
-                    // localStorage.setItem('DD101_TOKEN', responseJson.token);
-                    // this.setState({
-                    //     logged: true,
-                    //     error: undefined
-                    // })
+                    localStorage.setItem('DD101_TOKEN', responseJson.token);
+                    this.setState({
+                        logged: true,
+                        error: undefined
+                    })
+                }
+                if (responseJson.message !== 'User logged with success') {
+                    console.log("Senha errada")
                 }
             }).catch(err => this.setState({ error: err }));
 
@@ -293,7 +297,6 @@ class Login extends Component {
                     </div>
                     <div className="col">
                         <div className="card" style={{ width: '20rem', boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)' }}>
-                            <img className="card-img-top" src="https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAAV3AAAAJDEwODQxZWI3LTYyMmUtNDEzZS04YjNlLTNmNzA0YjY0OTMwMg.jpg" alt="Card image cap" />
                             <div className="card-body">
                                 <form onSubmit={this.handleSubmit}>
                                     <div className="form-group">
