@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { Col, Row, Button, Form, FormGroup, Label, Input} from 'reactstrap';
+import { Button} from 'reactstrap';
+import Logout from '../Login/logout'
+import { BrowserRouter, NavLink, Switch, Route } from 'react-router-dom';
+
 
 class AcademiaEditar extends Component {
 
@@ -13,7 +16,6 @@ class AcademiaEditar extends Component {
     componentDidMount() {
         let self = this;
         let token = localStorage.getItem('DD101_TOKEN');
-        console.log("Token:" + token)
         fetch('http://localhost:4005/academia', {
             method: 'GET',
             headers: {
@@ -22,7 +24,6 @@ class AcademiaEditar extends Component {
             },
             credentials: 'same-origin'
         }).then(function(response) {
-            console.log(response)
             if (response.status >= 400) {
                 throw new Error("Bad response from server");
             }
@@ -30,13 +31,24 @@ class AcademiaEditar extends Component {
         }).then(function(data) {
             self.setState({users: data});
         }).catch(err => {
-        console.log('caught it!',err);
+             console.log('caught it!',err);
         })
     }
 
+    // logoutSis(e) {
+
+    //     let token = localStorage.removeItem("DD101_TOKEN");
+    //     console.log(token)
+    //     localStorage.clear();
+
+    // }
+
     render() {
         return (
-        <div className="container"> 
+        <div className="container">
+            <div>
+                <Logout></Logout>
+            </div>
             <div className="panel panel-default p50 uth-panel">
                 <table className="table table-hover">
                     <thead>

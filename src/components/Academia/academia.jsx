@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Col, Row, Button, Form, FormGroup, Label, Input} from 'reactstrap';
 import { BrowserRouter, NavLink, Switch, Route } from 'react-router-dom';
-import AcademiaEditar from '../Academia/academia-editar'
+import AcademiaEditar from '../Academia/academia-dados'
 
 class Academia extends Component {
 
