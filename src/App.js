@@ -3,6 +3,7 @@ import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Login from './components/Login/login'
 import CadastroAcademia from './components/Cadastro-Academia/cadastro-academia'
+import Academia from './components/Academia/academia'
 import NotFound from './components/NotFound'
 
 class App extends Component {
@@ -14,6 +15,7 @@ class App extends Component {
                   <Route path="/" component={Login} exact />
                   <Route path="/login" component={Login} exact />
                   <Route path="/inscreva-se" component={CadastroAcademia} />
+                  <Route path="/academia" component={Academia} />
                   <Route component={NotFound} />
                 </Switch>
               </div>

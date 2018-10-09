@@ -168,7 +168,7 @@ class Login extends Component {
         }).then(response => response.json())
             .then(responseJson => {
                 if (responseJson.message === 'User logged with success') {
-                    this.props.history.push("/inscreva-se");
+                    this.props.history.push("/academia");
                     // localStorage.setItem('DD101_TOKEN', responseJson.token);
                     // this.setState({
                     //     logged: true,
