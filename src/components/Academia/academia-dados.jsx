@@ -35,14 +35,6 @@ class AcademiaEditar extends Component {
         })
     }
 
-    // logoutSis(e) {
-
-    //     let token = localStorage.removeItem("DD101_TOKEN");
-    //     console.log(token)
-    //     localStorage.clear();
-
-    // }
-
     render() {
         return (
         <div className="container">
