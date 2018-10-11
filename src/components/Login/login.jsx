@@ -168,8 +168,8 @@ class Login extends Component {
             .then(responseJson => {
                 console.log(responseJson.message)
                 if (responseJson.message === 'User logged with success') {
-                    this.props.history.push("/academia");
                     localStorage.setItem('DD101_TOKEN', responseJson.token);
+                    this.props.history.push("/academia");
                     this.setState({
                         logged: true,
                         error: undefined

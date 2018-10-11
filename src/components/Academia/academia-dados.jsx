@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import { Button} from 'reactstrap';
 import Logout from '../Login/logout'
-import { BrowserRouter, NavLink, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, NavLink, Switch, Route, Redirect } from 'react-router-dom';
 
 
 class AcademiaEditar extends Component {
+
+    state = {
+        toDashboard: false,
+    }
 
     constructor(props) {
         super(props)
@@ -25,7 +29,8 @@ class AcademiaEditar extends Component {
             credentials: 'same-origin'
         }).then(function(response) {
             if (response.status >= 400) {
-                throw new Error("Bad response from server");
+                self.setState(() => ({
+                    toDashboard: true}))
             }
             return response.json();
         }).then(function(data) {
@@ -36,6 +41,10 @@ class AcademiaEditar extends Component {
     }
 
     render() {
+        if (this.state.toDashboard === true) {
+            return <Redirect to='/login' />
+        }
+
         return (
         <div className="container">
             <div>

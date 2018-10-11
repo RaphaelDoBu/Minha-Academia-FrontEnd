@@ -10,7 +10,7 @@ class Logout extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
 
-        let token = localStorage.removeItem("DD101_TOKEN");
+        localStorage.removeItem("DD101_TOKEN");
         this.setState(() => ({
             toDashboard: true}))
         localStorage.clear();
@@ -19,7 +19,7 @@ class Logout extends Component {
     render() {
         if (this.state.toDashboard === true) {
             return <Redirect to='/login' />
-          }
+        }
         return(
         <div>
             <Button onClick={this.handleSubmit}>Logout</Button>

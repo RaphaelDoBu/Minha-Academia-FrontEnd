@@ -1,44 +1,31 @@
 import React, { Component } from 'react';
 import { Col, Row, Button, Form, FormGroup, Label, Input} from 'reactstrap';
-import { BrowserRouter, NavLink, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, NavLink, Switch, Route, Redirect } from 'react-router-dom';
 import AcademiaEditar from '../Academia/academia-dados'
 
 class Academia extends Component {
 
-    // constructor(props) {
-    //     super(props)
-    //     this.state = {
-    //         users: []
-    //     }
-    // }
+    state = {
+        toDashboard: '',
+    }
 
-    // componentDidMount() {
-    //     let self = this;
-    //     let token = localStorage.getItem('DD101_TOKEN');
-    //     console.log("Token:" + token.value)
-    //     fetch('http://localhost:4005/academia', {
-    //         method: 'GET',
-    //         headers: {
-    //             Accept: 'application/json',
-    //             "Content-Type": "application/json"
-    //         },
-    //         cookies:{
-    //             "access_token":  `${token}`
-    //         },
-    //         credentials: 'same-origin'
-    //     }).then(function(response) {
-    //         if (response.status >= 400) {
-    //             throw new Error("Bad response from server");
-    //         }
-    //         return response.json();
-    //     }).then(function(data) {
-    //         self.setState({users: data});
-    //     }).catch(err => {
-    //     console.log('caught it!',err);
-    //     })
-    // }
+    verificaToken(){
+        let token = localStorage.getItem('DD101_TOKEN');
+        console.log(token)
+        if(token === null){
+            this.setState(() => ({
+                toDashboard: true}))
+            console.log(token)
+        }
+        
+    }
 
     render() {
+        this.verificaToken()
+        if (this.state.toDashboard === true) {
+            return <Redirect to='/login' />
+        } 
+
         return (
         <div className="container"> 
             <div className="panel panel-default p50 uth-panel">
