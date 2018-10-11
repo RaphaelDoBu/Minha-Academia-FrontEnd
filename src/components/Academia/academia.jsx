@@ -6,18 +6,15 @@ import AcademiaEditar from '../Academia/academia-dados'
 class Academia extends Component {
 
     state = {
-        toDashboard: '',
+        toDashboard: false,
     }
 
     verificaToken(){
         let token = localStorage.getItem('DD101_TOKEN');
-        console.log(token)
         if(token === null){
             this.setState(() => ({
                 toDashboard: true}))
-            console.log(token)
         }
-        
     }
 
     render() {

@@ -62,31 +62,31 @@ class Login extends Component {
     //         }).catch(err => this.setState({ error: err }));
     // }
 
-    loadUsers() {
-        let url = 'http://localhost:3005/users/listusers';
-        let token = localStorage.getItem('DD101_TOKEN');
-        if (!token) {
-            this.setState({
-                error: 'No token defined. Please Login.'
-            })
-            return
-        }
+    // loadUsers() {
+    //     let url = 'http://localhost:3005/users/listusers';
+    //     let token = localStorage.getItem('DD101_TOKEN');
+    //     if (!token) {
+    //         this.setState({
+    //             error: 'No token defined. Please Login.'
+    //         })
+    //         return
+    //     }
 
-        fetch(url, {
-            method: "POST",
-            body: undefined,
-            headers: {
-                "Content-Type": "application/json",
-                "authorization": `Bearer ${token}`
-            }
-        }).then(response => response.json())
-            .then(responseJson => {
-                this.setState({
-                    users: responseJson.data,
-                    error: undefined
-                })
-            }).catch(err => this.setState({ error: err }));
-    }
+    //     fetch(url, {
+    //         method: "POST",
+    //         body: undefined,
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //             "authorization": `Bearer ${token}`
+    //         }
+    //     }).then(response => response.json())
+    //         .then(responseJson => {
+    //             this.setState({
+    //                 users: responseJson.data,
+    //                 error: undefined
+    //             })
+    //         }).catch(err => this.setState({ error: err }));
+    // }
 
     showAuthorizedArea() {
         if (this.state.logged) {
@@ -155,7 +155,6 @@ class Login extends Component {
                 password: this.state.password
             }
         };
-        console.log(JSON.stringify(dataToSend))
         let url = 'http://localhost:4005/auth/login';
 
         fetch(url, {
