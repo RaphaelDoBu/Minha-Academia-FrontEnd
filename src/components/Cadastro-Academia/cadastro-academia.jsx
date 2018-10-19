@@ -1,59 +1,132 @@
 import React, { Component } from 'react';
-import { Col, Row, Button, Form, FormGroup, Label, Input} from 'reactstrap';
+import { Col, Row, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import { withStyles } from '@material-ui/core/styles';
+import MenuItem from '@material-ui/core/MenuItem';
+import TextField from '@material-ui/core/TextField';
+
+const styles = theme => ({
+    container: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      
+    },
+    textField: {
+      marginLeft: theme.spacing.unit,
+      marginRight: theme.spacing.unit,
+     
+    },
+    
+    withoutLabel: {
+        marginTop: theme.spacing.unit * 3,
+      },
+  });
+  
 
 class CadastroAcademia extends Component {
+    state = {
+        nome: '',
+        cnpj: '',
+        estado: '',
+        cidade: '',
+        Bairro: '',
+        rua: '',
+        username: '',
+        password: '',
+    };
+    
+handleChange = name => event => {
+    this.setState({
+        [name]: event.target.value,
+    });
+};
   render() {
+    const { classes } = this.props;
+
     return (
-        <Form horizontal>
-            <Row form>
-                <Col md={6}>
-                    <FormGroup>
-                    <Label for="nomeAcademia">Nome da Academia</Label>
-                    <Input type="nome" name="nome" id="nome" placeholder="Academia ...." />
-                    </FormGroup>
-                </Col>
-            </Row>
-            <Row form>
-                <Col md={6}>
-                    <FormGroup>
-                    <Label for="endereco">Endereço</Label>
-                    <Input type="text" name="endereco" id="endereco" placeholder="Rua ..."/>
-                    </FormGroup>
-                </Col>
-            </Row>
-            <Row form>
-                <Col md={6}>
-                    <FormGroup>
-                    <Label for="cidade">Cidade</Label>
-                    <Input type="text" name="cidade" id="cidade"/>
-                    </FormGroup>
-                </Col>
-                <Col md={4}>
-                    <FormGroup>
-                    <Label for="estado">Estado</Label>
-                    <Input type="text" name="estado" id="estado"/>
-                    </FormGroup>
-                </Col>
-            </Row>
-            <Row>
-                <Col md={6}>
-                    <FormGroup>
-                    <Label for="username">Username</Label>
-                    <Input type="text" name="username" id="username"/>
-                    </FormGroup>  
-                </Col>
-                <Col md={4}>
-                    <FormGroup>
-                    <Label for="password">Password</Label>
-                    <Input type="password" name="password" id="examplePassword" placeholder="*****" />
-                    </FormGroup>
-                </Col>
-            </Row>
-            <Button>Sign in</Button>
-        </Form>
-  
+        <div className="container">
+            <div className="row" style={{ paddingTop: '50px' }}>
+                <div className="col"></div>
+                <form className={classes.container} noValidate autoComplete="off">
+                    
+                <TextField
+                    id="standard-nae"
+                    label="Nome"
+                    style={{ width: '50%' }}
+                    className={classes.textField}
+                    value={this.state.name}
+                    onChange={this.handleChange('name')}    
+                    margin="normal"
+                />
+                <TextField
+                    id="standard-uncontrolled"
+                    label="CNPJ"
+                    style={{ width: '20%' }}
+                    className={classes.textField}
+                    margin="normal"
+                    type="number"
+                />
+              
+                <TextField
+                    id="standard-required"
+                    label="Estado"
+                    style={{ width: '22%' }}
+                    className={classes.textField}
+                    margin="normal"
+                />
+                <TextField
+                    id="standard-error"
+                    label="Cidade"
+                    style={{ width: '25%' }}
+                    className={classes.textField}
+                    margin="normal"
+                />
+                <TextField
+                    id="standard-disabled"
+                    label="Bairro"
+                    style={{ width: '35%' }}
+                    className={classes.textField}
+                    margin="normal"
+                />
+                <TextField
+                    id="standard-password-input"
+                    label="Rua"
+                    style={{ width: '32%' }}
+                    className={classes.textField}
+                    autoComplete="current-password"
+                    margin="normal"
+                />
+                <div className="container" style={{ textAlign: 'center' }}>
+                    <TextField
+                        id="standard-password-input"
+                        label="Username"
+                        style={{ width: '20%' }}
+                        className={classes.textField}
+                        autoComplete="current-password"
+                        margin="normal"
+                    />
+                    <TextField
+                        id="standard-password-input"
+                        label="Password"
+                        style={{ width: '20%' }}
+                        className={classes.textField}
+                        type="password"
+                        autoComplete="current-password"
+                        margin="normal"
+                    />
+                </div>
+            
+            </form>
+            <div className="col"></div>
+        </div>
+    </div>
     );
   }
 }
-
-export default CadastroAcademia;
+CadastroAcademia.propTypes = {
+    classes: PropTypes.object.isRequired,
+  };
+  
+export default withStyles(styles)(CadastroAcademia);
+  

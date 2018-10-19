@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import CadastroAcademia from '../Cadastro-Academia/cadastro-academia';
+import { BrowserRouter, NavLink, Switch, Route, Redirect } from 'react-router-dom';
 
 class Login extends Component {
 
     constructor() {
         super();
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleSignUpSubmit = this.handleSignUpSubmit.bind(this);
         this.handleUsernameChange = this.handleUsernameChange.bind(this);
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
 
@@ -25,79 +26,6 @@ class Login extends Component {
 
     static displayName = 'ui-LoginForm'
 
-    // componentDidMount() {
-    //     this.verifytoken();
-    // }
-
-    // verifytoken() {
-    //     let url = 'http://localhost:3005/auth/verifytoken';
-    //     let token = localStorage.getItem('DD101_TOKEN');
-
-    //     if (!token) {
-    //         this.setState({
-    //             error: 'No token defined. Please Login.'
-    //         })
-    //     }
-
-    //     fetch(url, {
-    //         method: "GET",
-    //         body: undefined,
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //             "authorization": `Bearer ${token}`
-    //         }
-    //     }).then(response => response.json())
-    //         .then(responseJson => {
-    //             if (responseJson.success) {
-    //                 this.setState({
-    //                     logged: responseJson.success,
-    //                     error: undefined
-    //                 })
-    //                 this.loadUsers()
-    //             } else {
-    //                 this.setState({
-    //                     error: responseJson.error.message
-    //                 })
-    //             }
-    //         }).catch(err => this.setState({ error: err }));
-    // }
-
-    // loadUsers() {
-    //     let url = 'http://localhost:3005/users/listusers';
-    //     let token = localStorage.getItem('DD101_TOKEN');
-    //     if (!token) {
-    //         this.setState({
-    //             error: 'No token defined. Please Login.'
-    //         })
-    //         return
-    //     }
-
-    //     fetch(url, {
-    //         method: "POST",
-    //         body: undefined,
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //             "authorization": `Bearer ${token}`
-    //         }
-    //     }).then(response => response.json())
-    //         .then(responseJson => {
-    //             this.setState({
-    //                 users: responseJson.data,
-    //                 error: undefined
-    //             })
-    //         }).catch(err => this.setState({ error: err }));
-    // }
-
-    showAuthorizedArea() {
-        if (this.state.logged) {
-            return (
-                <div>
-                    <button type="button" className="btn btn-primary btn-block" data-toggle="modal" data-target="#authenticatedModal" data-whatever="@mdo" >Call Authenticated only API</button>
-                    <small id="emailHelp" className="form-text text-muted">Only registered and logged users can call and see the list. Plese click the button above to call the API.</small>
-                </div>
-            );
-        }
-    }
 
     /*
     Register Form area
@@ -155,6 +83,7 @@ class Login extends Component {
                 password: this.state.password
             }
         };
+        console.log(JSON.stringify(dataToSend))
         let url = 'http://localhost:4005/auth/login';
 
         fetch(url, {
@@ -197,98 +126,6 @@ class Login extends Component {
     render() {
         return (
             <div className="container">
-                {/* Begin Modal Register Form */}
-                <div className="modal fade" id="signupModel" tabIndex="-1" role="dialog" aria-labelledby="signupModelLabel" aria-hidden="true">
-                    <div className="modal-dialog" role="document">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <h5 className="modal-title" id="signupModelLabel">Registration Form</h5>
-                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div className="modal-body">
-
-                                {
-                                    this.state.signUp.success !== undefined ? (
-                                        this.state.signUp.success === true ?
-                                            <div className="alert alert-success" role="alert">
-                                                {this.state.signUp.message}
-                                            </div>
-                                            :
-                                            <div className="alert alert-danger" role="alert">
-                                                {this.state.signUp.message}
-                                            </div>
-                                    ) : ''
-                                }
-
-                                <form onSubmit={this.handleSignUpSubmit}>
-                                    <div className="form-group">
-                                        <label htmlFor="recipient-name" className="form-control-label">Name</label>
-                                        <input type="text" ref="username" className="form-control" id="username" />
-                                    </div>
-                                    <div className="form-group">
-                                        <label htmlFor="username" className="form-control-label">Username</label>
-                                        <input type="text" ref="username" className="form-control" id="username" />
-                                    </div>
-                                    <div className="form-group">
-                                        <label htmlFor="message-text" className="form-control-label">Password:</label>
-                                        <input type="password" ref="password" className="form-control" id="password" />
-                                    </div>
-                                    <div className="modal-footer">
-                                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="submit" className="btn btn-primary">Register</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {/* Begin Modal Register Form */}
-
-                {/* Begin Modal List Authenticad List  */}
-
-                <div className="modal fade" id="authenticatedModal" tabIndex="-1" role="dialog" aria-labelledby="authenticatedModalLabel" aria-hidden="true">
-                    <div className="modal-dialog" role="document">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <h5 className="modal-title" id="authenticatedModalLabel">Only Authenticated Users can see this list!</h5>
-                            </div>
-                            <div className="modal-body">
-
-                                <div className="list-group">
-
-                                    {
-                                        /**
-                                         * List the users when authenticated
-                                         */
-                                        (this.state.users !== undefined && this.error === undefined) ? (
-                                            this.state.users.map((user) => (
-                                                <a key={user.userData} href="#" className="list-group-item list-group-item-action flex-column align-items-start">
-                                                    <div className="d-flex w-100 justify-content-between">
-                                                        <h5 className="mb-1">Name: {user.name}</h5>
-                                                        <small>01/09/2017</small>
-                                                    </div>
-                                                    <p className="mb-1">E-mail: {user.username}</p>
-                                                    <small>Password (Should never do that)</small>
-                                                </a>
-                                            ))
-                                        ) : this.state.error
-                                    }
-                                </div>
-
-                            </div>
-                            <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary btn-block" data-dismiss="modal">Close</button>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                {/* End Modal List Authenticad List */}
-
-
                 {/* Begin Login Form */}
                 <div className="row" style={{ paddingTop: '50px' }}>
                     <div className="col">
@@ -313,13 +150,18 @@ class Login extends Component {
                                         </label>
                                     </div>
                                     <button type="submit" className="btn btn-primary btn-block">Login</button>
-                                    <small id="emailHelp" className="form-text text-muted">If you are not registered. Plese <a href="#" data-toggle="modal" data-target="#signupModel" data-whatever="@mdo" >Signup</a></small>
-                                    <br />
-                                    {
-                                        this.showAuthorizedArea()
-                                    }
+                                    <small id="emailHelp" className="form-text text-muted">If you are not registered. Plese
+                                     
+                                    <NavLink to="/inscreva-se"><a>Signup</a></NavLink>
+                                    </small>
                                 </form>
-
+                            <BrowserRouter>
+                                <div>
+                                <Switch>
+                                    <Route path="/inscreva-se" component={CadastroAcademia} />
+                                </Switch>
+                                </div>
+                            </BrowserRouter>
 
                             </div>
                         </div>
