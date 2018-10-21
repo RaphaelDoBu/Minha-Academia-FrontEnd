@@ -12,7 +12,6 @@ const styles = theme => ({
     textField: {
       marginLeft: theme.spacing.unit,
       marginRight: theme.spacing.unit,
-     
     },
     
     withoutLabel: {
@@ -63,17 +62,17 @@ class CadastroAcademia extends Component {
             headers: {
                 "Content-Type": "application/json"
             }
-        }).then(response => response.json())
-            .then(responseJson => {
-                console.log(responseJson.message)
-                if (responseJson.message === 'User logged with success') {
-                    this.props.history.push("/login");
+        }).then(response => response.status)
+            .then(status => {
+                console.log(status)
+                if (status === 200) {
                     this.setState({
                         logged: true,
                         error: undefined
                     })
+                    this.props.history.push("/login");
                 }
-                if (responseJson.message !== 'User logged with success') {
+                if (status >= 400) {
                     console.log("Senha errada")
                 }
             }).catch(err => this.setState({ error: err }));
@@ -91,9 +90,12 @@ class CadastroAcademia extends Component {
 
     return (
         <div className="container">
-            <div className="row" style={{ paddingTop: '50px' }}>
-            <div className="row" style={{ marginLeft: '33%' }}><h2>Dados da Academia</h2></div>
-                <div className="col"></div>
+        <div className="row" style={{ paddingTop: '50px' }}>
+            <div className="col"></div>
+            <div className="col">
+                <div className="card" style={{ width: '65rem', boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)' }}>
+                <div className="row" style={{ marginLeft: '33%', marginTop:'5%' }}><h2>Dados da Academia</h2></div>
+                <div className="card-body" style={{marginLeft:'3%'}}>
                 <form  onSubmit={this.handleSubmit} className={classes.container} noValidate autoComplete="off">
                     
                 <TextField
@@ -172,8 +174,11 @@ class CadastroAcademia extends Component {
                 </div>
                
 
-            </form>
-            <div className="col"></div>
+                </form>
+                </div>
+            </div>
+        </div>
+        <div className="col"></div>
         </div>
     </div>
     );

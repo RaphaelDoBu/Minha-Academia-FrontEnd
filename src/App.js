@@ -5,6 +5,7 @@ import Login from './components/Login/login'
 import Logout from './components/Login/logout'
 import CadastroAcademia from './components/Cadastro-Academia/cadastro-academia'
 import Academia from './components/Academia/academia'
+import CadastroCliente from './components/Cadastro-Cliente/cadastro-cliente'
 import AcademiaEditar from './components/Academia/academia-dados'
 import NotFound from './components/NotFound'
 
@@ -19,7 +20,7 @@ class App extends Component {
                   <Route path="/inscreva-se" component={CadastroAcademia} />
                   <Route path="/academia" component={Academia} />
                   <Route path="/logout" component={Logout} />
-
+                  <Route path="/matricula" component={CadastroCliente} />
                   <Route path="/academia-editar" component={AcademiaEditar} />
                   <Route component={NotFound} />
                 </Switch>
