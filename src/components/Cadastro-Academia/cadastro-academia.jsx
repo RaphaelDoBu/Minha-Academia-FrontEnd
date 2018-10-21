@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import { Col, Row, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
-import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 
 const styles = theme => ({
@@ -33,7 +30,6 @@ class CadastroAcademia extends Component {
         this.state = {
             nome: undefined,
             cnpj: undefined,
-            endereco: undefined,
             estado: undefined,
             cidade: undefined,
             bairro: undefined,
@@ -43,23 +39,12 @@ class CadastroAcademia extends Component {
     
         }
     }
-    // state = {
-    //     nome: '',
-    //     cnpj: '',
-    //     estado: '',
-    //     cidade: '',
-    //     Bairro: '',
-    //     rua: '',
-    //     username: '',
-    //     password: '',
-    // };
 
     handleSubmit(e) {
         e.preventDefault();
         let dataToSend = {
             
                 nome: this.state.nome,
-                endereco: this.state.endereco,
                 cnpj: this.state.cnpj,
                 estado: this.state.estado,
                 cidade: this.state.cidade,
@@ -107,12 +92,13 @@ class CadastroAcademia extends Component {
     return (
         <div className="container">
             <div className="row" style={{ paddingTop: '50px' }}>
+            <div className="row" style={{ marginLeft: '33%' }}><h2>Dados da Academia</h2></div>
                 <div className="col"></div>
                 <form  onSubmit={this.handleSubmit} className={classes.container} noValidate autoComplete="off">
                     
                 <TextField
-                    id="standard-nae"
-                    label="Nome"
+                    id="standard-name"
+                    label="Nome da Academia"
                     style={{ width: '50%' }}
                     className={classes.textField}
                     value={this.state.name}
@@ -127,14 +113,6 @@ class CadastroAcademia extends Component {
                     className={classes.textField}
                     margin="normal"
                     type="number"
-                />
-                <TextField
-                    id="standard-required"
-                    label="Endereco"
-                    style={{ width: '22%' }}
-                    onChange={this.handleChange('endereco')} 
-                    className={classes.textField}
-                    margin="normal"
                 />
                 <TextField
                     id="standard-required"
@@ -162,7 +140,7 @@ class CadastroAcademia extends Component {
                 />
                 <TextField
                     id="standard-password-input"
-                    label="Rua"
+                    label="Rua e número"
                     style={{ width: '32%' }}
                     onChange={this.handleChange('rua')} 
                     className={classes.textField}
@@ -189,8 +167,10 @@ class CadastroAcademia extends Component {
                         autoComplete="current-password"
                         margin="normal"
                     />
+                    <button type="submit" className="btn btn-primary btn-block button" 
+                            style={{ marginLeft:'30%', width: '40%', 'marginTop': '2%' }}>Registrar</button>
                 </div>
-                <button type="submit" className="btn btn-primary btn-block">Registrar</button>
+               
 
             </form>
             <div className="col"></div>
