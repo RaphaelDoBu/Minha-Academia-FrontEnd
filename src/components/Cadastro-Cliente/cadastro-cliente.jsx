@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import { Redirect } from 'react-router-dom';
 
 const styles = theme => ({
     container: {
@@ -21,6 +22,18 @@ const styles = theme => ({
   
 
 class CadastroCliente extends Component {
+    state = {
+        toDashboard: false,
+    }
+
+    verificaToken(){
+        let token = localStorage.getItem('DD101_TOKEN');
+        if(token === null){
+            this.setState(() => ({
+                toDashboard: true}))
+        }
+    }
+    
     constructor() {
         super();
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -41,9 +54,11 @@ class CadastroCliente extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        let self = this;
+        let token = localStorage.getItem('DD101_TOKEN');
         let dataToSend = {
                 nome: this.state.nome,
-                cpf: this.state.cnpj,
+                cpf: this.state.cpf,
                 estado: this.state.estado,
                 cidade: this.state.cidade,
                 bairro: this.state.bairro,
@@ -59,7 +74,8 @@ class CadastroCliente extends Component {
             method: "POST",
             body: JSON.stringify(dataToSend),
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "authorization": `Bearer ${token}`
             }
         }).then(response => response.json())
             .then(responseJson => {
@@ -79,13 +95,18 @@ class CadastroCliente extends Component {
             e.target.reset()
     }
 
-    handleChange = name => event => {
+    handleChange = name => e => {
         this.setState({
-            [name]: event.target.value,
+            [name]: e.target.value,
         });
     };
     render() {
     const { classes } = this.props;
+    this.verificaToken()
+    if (this.state.toDashboard === true) {
+        return <Redirect to='/login' />
+    } 
+
 
     return (
         <div className="container">
