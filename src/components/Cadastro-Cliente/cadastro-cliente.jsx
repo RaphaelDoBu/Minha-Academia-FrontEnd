@@ -101,15 +101,14 @@ class CadastroCliente extends Component {
         });
     };
     render() {
-    const { classes } = this.props;
-    this.verificaToken()
-    if (this.state.toDashboard === true) {
-        return <Redirect to='/login' />
-    } 
+        const { classes } = this.props;
+        this.verificaToken()
+        if (this.state.toDashboard === true) {
+            return <Redirect to='/login' />
+        } 
 
-
-    return (
-        <div className="container">
+        return (
+            <div className="container">
             <div className="row" style={{ paddingTop: '50px' }}>
                 <div className="col"></div>
                 <div className="col">
