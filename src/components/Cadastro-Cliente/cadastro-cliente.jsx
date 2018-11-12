@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import { Redirect } from 'react-router-dom';
+import NavBar from '../navbar';
 
 const styles = theme => ({
     container: {
@@ -108,6 +109,7 @@ class CadastroCliente extends Component {
         } 
 
         return (
+            <div><NavBar></NavBar>
             <div className="container">
             <div className="row" style={{ paddingTop: '50px' }}>
                 <div className="col"></div>
@@ -204,6 +206,7 @@ class CadastroCliente extends Component {
                             </form>
                         </div>
                 </div>
+            </div>
             </div>
             <div className="col"></div>
         </div>

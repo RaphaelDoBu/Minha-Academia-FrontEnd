@@ -8,7 +8,6 @@ import Academia from './components/Academia/academia'
 import CadastroCliente from './components/Cadastro-Cliente/cadastro-cliente'
 import AcademiaEditar from './components/Academia/academia-dados'
 import NotFound from './components/NotFound'
-import NavBar from './components/navbar';
 
 class App extends Component {
   render() {
@@ -23,8 +22,6 @@ class App extends Component {
                   <Route path="/logout" component={Logout} />
                   <Route path="/matricula" component={CadastroCliente} />
                   <Route path="/academia-editar" component={AcademiaEditar} />
-                  <Route path="/nav" component={NavBar}/>
-
                   <Route component={NotFound} />
                 </Switch>
               </div>
