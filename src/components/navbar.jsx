@@ -22,12 +22,12 @@ export default class NavBar extends React.Component {
     return (
       <div>
         <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">Minha Academia</NavbarBrand>
+          <NavbarBrand href="/academia">Minha Academia</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/">Inicio</NavLink>
+                <NavLink href="/academia">Inicio</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href="/matricula">Alunos</NavLink>
@@ -48,13 +48,14 @@ export default class NavBar extends React.Component {
                   </DropdownItem>
                   <DropdownItem divider />
                   <DropdownItem>
-                    Sair
+                    <NavLink href="/logout">Sair</NavLink>
                   </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
             </Nav>
           </Collapse>
         </Navbar>
+        
       </div>
     );
   }
