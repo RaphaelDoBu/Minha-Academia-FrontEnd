@@ -1,15 +1,46 @@
 import React from 'react';
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, UncontrolledDropdown,
-  DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+  DropdownToggle, DropdownMenu, DropdownItem, Button } from 'reactstrap';
+import Logout from './Login/logout';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import Modal from 'react-awesome-modal';
 
 export default class NavBar extends React.Component {
   constructor(props) {
     super(props);
 
     this.toggle = this.toggle.bind(this);
+
     this.state = {
-      isOpen: false
+      isOpen: false,
+      visible : false
     };
+  }
+  
+  state = {
+      toDashboard: false,
+  }
+
+  openModal() {
+      this.setState({
+          visible : true
+      });
+  }
+
+  exibirLogout(){
+    console.log(this.state.visible)
+
+    if (this.state.visible === true) {
+      return <Logout></Logout>
+    }
+  }
+
+  handleSubmit = (e) => {
+      e.preventDefault();
+      localStorage.removeItem("DD101_TOKEN");
+      this.setState(() => ({
+          toDashboard: true}))
+      localStorage.clear();
   }
 
   toggle() {
@@ -19,6 +50,9 @@ export default class NavBar extends React.Component {
   }
 
   render() {
+    if (this.state.toDashboard === true) {
+      return <Redirect to='/login' />
+    }
     return (
       <div>
         <Navbar color="light" light expand="md">
@@ -48,14 +82,14 @@ export default class NavBar extends React.Component {
                   </DropdownItem>
                   <DropdownItem divider />
                   <DropdownItem>
-                    <NavLink href="/logout">Sair</NavLink>
+                    <Button type="button" onClick={() => this.openModal()}>Sair</Button>
                   </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
             </Nav>
           </Collapse>
         </Navbar>
-        
+        {this.exibirLogout()}
       </div>
     );
   }

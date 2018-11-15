@@ -20,7 +20,7 @@ class Academia extends Component {
 
     render() {
         this.verificaToken()
-        if (this.state.toDashboard === true) {
+        if (this.state.toDashboard) {
             return <Redirect to='/login' />
         } 
 

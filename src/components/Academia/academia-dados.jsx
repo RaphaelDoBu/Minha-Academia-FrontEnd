@@ -47,9 +47,6 @@ class AcademiaEditar extends Component {
 
         return (
         <div className="container">
-            <div>
-                <Logout></Logout>
-            </div>
             <div className="panel panel-default p50 uth-panel">
                 <table className="table table-hover">
                     <thead>
