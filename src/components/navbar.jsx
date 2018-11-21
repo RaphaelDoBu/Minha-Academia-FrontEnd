@@ -2,8 +2,8 @@ import React from 'react';
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, UncontrolledDropdown,
   DropdownToggle, DropdownMenu, DropdownItem, Button } from 'reactstrap';
 import Logout from './Login/logout';
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
-import Modal from 'react-awesome-modal';
+import { Redirect } from 'react-router-dom';
+import '../index'
 
 export default class NavBar extends React.Component {
   constructor(props) {
@@ -55,22 +55,22 @@ export default class NavBar extends React.Component {
     }
     return (
       <div>
-        <Navbar color="light" light expand="md">
-          <NavbarBrand href="/academia">Minha Academia</NavbarBrand>
+        <Navbar light expand="md" style={{backgroundColor:'black'}}>
+          <NavbarBrand href="/academia" style={{color:'white'}}>Minha Academia</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/academia">Inicio</NavLink>
+                <NavLink href="/academia" style={{color:'white'}}>Inicio</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/matricula">Alunos</NavLink>
+                <NavLink href="/matricula" style={{color:'white'}}>Alunos</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/matricula">Cadastrar Alunos</NavLink>
+                <NavLink href="/matricula" style={{color:'white'}}>Cadastrar Alunos</NavLink>
               </NavItem>
-              <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
+              <UncontrolledDropdown nav inNavbar style={{color:'white'}}>
+                <DropdownToggle nav caret style={{color:'white'}}>
                   Itens
                 </DropdownToggle>
                 <DropdownMenu right>

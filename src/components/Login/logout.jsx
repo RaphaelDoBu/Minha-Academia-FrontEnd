@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Col, Row, Button, Form, FormGroup, Label, Input} from 'reactstrap';
-import { BrowserRouter, NavLink, Switch, Route, Redirect} from 'react-router-dom';
-import {withRouter} from "react-router-dom";
+import { Button} from 'reactstrap';
+import { Redirect} from 'react-router-dom';
 import Modal from 'react-awesome-modal';
 import createHistory from 'history/createBrowserHistory'
 

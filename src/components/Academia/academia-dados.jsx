@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import { Button} from 'reactstrap';
-import Logout from '../Login/logout'
-import { BrowserRouter, NavLink, Switch, Route, Redirect } from 'react-router-dom';
-
+import { Redirect } from 'react-router-dom';
 
 class AcademiaEditar extends Component {
 
