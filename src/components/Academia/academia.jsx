@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { Button} from 'reactstrap';
-import { BrowserRouter, NavLink, Switch, Route, Redirect } from 'react-router-dom';
-import AcademiaEditar from '../Academia/academia-dados'
+import { Redirect } from 'react-router-dom';
 import NavBar from '../navbar';
 import imagem from '../../imagens/outra.png'
+
 class Academia extends Component {
 
     state = {
@@ -29,7 +28,7 @@ class Academia extends Component {
             <NavBar></NavBar>
             <div className="container">
                 <div className="panel panel-default p50 uth-panel" style={{textAlign:"center"}}>
-                    <img src={imagem} alt="Alguma coisa"/>
+                    <img src={imagem} alt="Atleta"/>
                 </div>
             </div>
         </div>

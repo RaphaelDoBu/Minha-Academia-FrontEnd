@@ -8,6 +8,7 @@ import Academia from './components/Academia/academia'
 import CadastroCliente from './components/Cadastro-Cliente/cadastro-cliente'
 import AcademiaEditar from './components/Academia/academia-dados'
 import NotFound from './components/NotFound'
+import ClienteDados from './components/Cliente/cliente-dados';
 
 class App extends Component {
   render() {
@@ -21,6 +22,8 @@ class App extends Component {
                   <Route path="/academia" component={Academia} />
                   <Route path="/logout" component={Logout} />
                   <Route path="/matricula" component={CadastroCliente} />
+                  <Route path="/alunos" component={ClienteDados} />
+
                   <Route path="/academia-editar" component={AcademiaEditar} />
                   <Route component={NotFound} />
                 </Switch>

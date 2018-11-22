@@ -64,7 +64,7 @@ export default class NavBar extends React.Component {
                 <NavLink href="/academia" style={{color:'white'}}>Inicio</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/matricula" style={{color:'white'}}>Alunos</NavLink>
+                <NavLink href="/alunos" style={{color:'white'}}>Alunos</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href="/matricula" style={{color:'white'}}>Cadastrar Alunos</NavLink>
