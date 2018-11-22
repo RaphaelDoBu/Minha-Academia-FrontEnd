@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import NavBar from '../navbar';
-import imagemDetalhes from '../../imagens/baseline-more_vert-24px.svg'
-import imagemEditar from '../../imagens/baseline-edit-24px.svg'
 import {Button } from 'reactstrap';
 import ClienteDetalhes from './clientes-detalhes';
 import Modal from 'react-awesome-modal';
+import imagemDetalhes from '../../imagens/baseline-more_vert-24px.svg'
+import imagemEditar from '../../imagens/baseline-edit-24px.svg'
+import imagemPagamento from '../../imagens/baseline-check-24px.svg'
 
 class ClienteDados extends Component {
 
@@ -18,14 +19,14 @@ class ClienteDados extends Component {
         this.state = {
             clientes: [],
             isOpen: false,
-            visible : false,
+            visibleDetalhes : false,
             detalhesCliente: undefined
         }
     }
 
     closeModal() {
         this.setState(() => ({
-            visible: false
+            visibleDetalhes: false
         }))
     }
 
@@ -38,20 +39,19 @@ class ClienteDados extends Component {
 
     openModalDetalhes(cliente) {
         this.setState({
-            visible : true,
+            visibleDetalhes : true,
             detalhesCliente: cliente
         });
     }
   
     exibirLogout(){
-        if (this.state.visible === true && this.state.detalhesCliente !== null) {
+        if (this.state.visibleDetalhes === true && this.state.detalhesCliente !== null) {
             return(
                 <section>
-                    <Modal visible={this.state.visible} width="40%" height="50%" effect="fadeInUp" 
+                    <Modal visible={this.state.visibleDetalhes} width="40%" height="50%" effect="fadeInUp" 
                         onClickAway={() => this.closeModal()}>
                         <div className="col">
-                            <h3 style={{textAlign:"center"}}>Detalhes de 
-                                        {this.state.detalhesCliente.nome}</h3>
+                            <h3 style={{textAlign:"center"}}>Detalhes de {this.state.detalhesCliente.nome}</h3>
                         </div>
                         <div className="container">
                             <h7>Data de Nascimento: {this.state.detalhesCliente.dataNascimento}</h7>
@@ -72,7 +72,6 @@ class ClienteDados extends Component {
                         </div>
                         <div className="col" style={{ marginTop: '10%', textAlign:"center" }}>
                             <Button href="javascript:void(0);" onClick={() => this.closeModal()}>Fechar</Button>
-                            {/* <Button href="javascript:void(0);" onClick={this.handleSubmit} style={{ float: 'right' }}>Sim</Button> */}
                         </div>
                     </Modal>
                 </section> 
@@ -113,15 +112,18 @@ class ClienteDados extends Component {
         return (
         <div><NavBar></NavBar>
         <div className="container">
+            <div className="col" style={{marginTop: "2%", marginBottom: "3%"}}>
+                <h2 style={{textAlign:"center"}}>Clientes da Academia</h2>
+            </div>
             <div className="panel panel-default p40 uth-panel">
                 <table className="table table-hover">
                     <thead>
                         <tr>
                             <th>Nome</th>
-                            <th>Foco</th>
                             <th>Peso</th>
                             <th>Editar</th>
                             <th>Detalhes</th>
+                            <th>Pagamento</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -129,13 +131,15 @@ class ClienteDados extends Component {
                             this.state.clientes[0].map((cliente) => (
                                 <tr key={cliente.id}>
                                 <td>{cliente.nome}</td>
-                                <td>{cliente.foco}</td>
                                 <td>{cliente.peso} Kg</td>
                                 <td><a onClick={() => this.openModalEditar(cliente)}><img src={imagemEditar} 
                                         alt="Editar"/></a></td>
                                 <td><a onClick={() => this.openModalDetalhes(cliente)}><img src={imagemDetalhes} 
                                         alt="Detalhes"/></a></td>
+                                <td><a onClick={() => this.openModalDetalhes(cliente)}><img src={imagemPagamento} 
+                                    alt="Pagamento"/></a></td>
                                 </tr>
+                                
                                 ))
                             ) : this.state.error
                             }
