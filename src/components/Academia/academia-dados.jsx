@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import NavBar from '../navbar';
 
 class AcademiaEditar extends Component {
 
@@ -43,27 +44,30 @@ class AcademiaEditar extends Component {
         }
 
         return (
-        <div className="container">
-            <div className="panel panel-default p50 uth-panel">
-                <table className="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>Member name</th>
-                            <th>Member email</th>
-                            <th>Blood Group</th>
-                            <th>Phone number</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr key={this.state.users.id}>
-                        <td>{this.state.users.nome} </td>
-                        <td>{this.state.users.endereco}</td>
-                        <td>{this.state.users.cnpj}</td>
-                        <td><a>Edit</a>|<a>Delete</a></td>
-                        </tr>
-                    </tbody>
-                </table>
+        <div>
+            <NavBar></NavBar>   
+            <div className="container">
+                <div className="panel panel-default p50 uth-panel">
+                    <table className="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Member name</th>
+                                <th>Member email</th>
+                                <th>Blood Group</th>
+                                <th>Phone number</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr key={this.state.users.id}>
+                            <td>{this.state.users.nome} </td>
+                            <td>{this.state.users.endereco}</td>
+                            <td>{this.state.users.cnpj}</td>
+                            <td><a>Edit</a>|<a>Delete</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
         );

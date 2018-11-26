@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import NavBar from '../navbar';
 import {Button } from 'reactstrap';
-import ClienteDetalhes from './clientes-detalhes';
 import Modal from 'react-awesome-modal';
 import imagemDetalhes from '../../imagens/baseline-more_vert-24px.svg'
 import imagemEditar from '../../imagens/baseline-edit-24px.svg'
@@ -71,12 +70,11 @@ class ClienteDados extends Component {
                             <h7>Treinos: ----</h7>
                         </div>
                         <div className="col" style={{ marginTop: '10%', textAlign:"center" }}>
-                            <Button href="javascript:void(0);" onClick={() => this.closeModal()}>Fechar</Button>
+                            <Button onClick={() => this.closeModal()}>Fechar</Button>
                         </div>
                     </Modal>
                 </section> 
             )
-        // return <ClienteDetalhes></ClienteDetalhes>
       }
     }
 

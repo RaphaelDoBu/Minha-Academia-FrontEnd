@@ -3,7 +3,7 @@ import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, Un
   DropdownToggle, DropdownMenu, DropdownItem, Button } from 'reactstrap';
 import Logout from './Login/logout';
 import { Redirect } from 'react-router-dom';
-import '../index'
+import '../css/Navbar.css'
 
 export default class NavBar extends React.Component {
   constructor(props) {
@@ -56,29 +56,26 @@ export default class NavBar extends React.Component {
     return (
       <div>
         <Navbar light expand="md" style={{backgroundColor:'black'}}>
-          <NavbarBrand href="/academia" style={{color:'white'}}>Minha Academia</NavbarBrand>
+          <NavbarBrand href="/academia"><h3 className="principal">Minha Academia</h3></NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/academia" style={{color:'white'}}>Inicio</NavLink>
+                <NavLink href="/academia" >
+                    <h6 className="navs">Inicio</h6></NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/alunos" style={{color:'white'}}>Alunos</NavLink>
+                <NavLink href="/alunos"><h6 className="navs"> Alunos</h6></NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/matricula" style={{color:'white'}}>Cadastrar Alunos</NavLink>
+                <NavLink href="/matricula"><h6 className="navs"> Cadastrar Alunos</h6></NavLink>
               </NavItem>
               <UncontrolledDropdown nav inNavbar style={{color:'white'}}>
                 <DropdownToggle nav caret style={{color:'white'}}>
-                  Itens
                 </DropdownToggle>
                 <DropdownMenu right>
                   <DropdownItem>
-                    Editar Cadastro
-                  </DropdownItem>
-                  <DropdownItem>
-                    Option 2
+                    <NavLink href="/academia-editar" style={{color:'black'}}>Editar Cadastro</NavLink>
                   </DropdownItem>
                   <DropdownItem divider />
                   <DropdownItem>

@@ -23,7 +23,6 @@ class App extends Component {
                   <Route path="/logout" component={Logout} />
                   <Route path="/matricula" component={CadastroCliente} />
                   <Route path="/alunos" component={ClienteDados} />
-
                   <Route path="/academia-editar" component={AcademiaEditar} />
                   <Route component={NotFound} />
                 </Switch>

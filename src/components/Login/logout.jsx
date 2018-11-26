@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import { Button} from 'reactstrap';
 import { Redirect} from 'react-router-dom';
 import Modal from 'react-awesome-modal';
-import createHistory from 'history/createBrowserHistory'
-
-const history = createHistory();
 
 class Logout extends Component {
     constructor(props) {
@@ -39,12 +36,12 @@ class Logout extends Component {
         }
         return (
         <section>
-            <Modal visible={this.state.visible} width="300" height="150" effect="fadeInUp" 
+            <Modal visible={this.state.visible} width="20%" height="110" effect="fadeInUp" 
               onClickAway={() => this.closeModal()}>
-              <h3>Deseja Sair?</h3>
+              <h3 style={{textAlign:"center"}}>Deseja Sair?</h3>
               <div className="col" style={{ marginTop: '10%' }}>
-                <Button href="javascript:void(0);" onClick={() => this.closeModal()}>Não</Button>
-                <Button href="javascript:void(0);" onClick={this.handleSubmit} style={{ float: 'right' }}>Sim</Button>
+                <Button onClick={() => this.closeModal()}>Não</Button>
+                <Button onClick={this.handleSubmit} style={{ float: 'right' }}>Sim</Button>
               </div>
             </Modal>
         </section>  

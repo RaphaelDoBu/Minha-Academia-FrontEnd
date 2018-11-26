@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import { Redirect } from 'react-router-dom';
 import NavBar from '../navbar';
+import { Button} from 'reactstrap';
 
 const styles = theme => ({
     container: {
@@ -55,7 +56,6 @@ class CadastroCliente extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        let self = this;
         let token = localStorage.getItem('DD101_TOKEN');
         let dataToSend = {
                 nome: this.state.nome,
@@ -78,18 +78,17 @@ class CadastroCliente extends Component {
                 "Content-Type": "application/json",
                 "authorization": `Bearer ${token}`
             }
-        }).then(response => response.json())
-            .then(responseJson => {
-                console.log(responseJson.message)
-                if (responseJson.message === 'User logged with success') {
-                    this.props.history.push("/academia");
+        }).then(response => response.status)
+            .then(status => {
+                if (status === 200) {
                     this.setState({
                         logged: true,
                         error: undefined
                     })
+                    this.props.history.push("/alunos");
                 }
-                if (responseJson.message !== 'User logged with success') {
-                    console.log("Senha errada")
+                if (status >= 400) {
+                    console.log("Dados errados")
                 }
             }).catch(err => this.setState({ error: err }));
 
@@ -130,7 +129,7 @@ class CadastroCliente extends Component {
                                 margin="normal"
                             />
                             <TextField
-                                id="standard-uncontrolled"
+                                id="standard-name"
                                 style={{ width: '16%', marginTop:'3.5%' }}
                                 onChange={this.handleChange('dataNascimento')} 
                                 className={classes.textField}
@@ -138,7 +137,7 @@ class CadastroCliente extends Component {
                                 type="date"
                             />
                             <TextField
-                                id="standard-uncontrolled"
+                                id="standard-name"
                                 label="CPF"
                                 style={{ width: '19%' }}
                                 onChange={this.handleChange('cpf')} 
@@ -196,12 +195,11 @@ class CadastroCliente extends Component {
                                 style={{ width: '76.5%' }}
                                 onChange={this.handleChange('foco')} 
                                 className={classes.textField}
-                                type="password"
                                 autoComplete="current-password"
                                 margin="normal"
                             />
-                            <button type="submit" className="btn btn-primary btn-block button" 
-                                    style={{ marginLeft:'30%', width: '40%', 'marginTop': '2%' }}>Registrar</button>
+                            <Button type="submit" className="btn btn-primary btn-block button" 
+                                    style={{ marginLeft:'30%', width: '40%', 'marginTop': '2%' }}>Registrar</Button>
                         
                             </form>
                         </div>

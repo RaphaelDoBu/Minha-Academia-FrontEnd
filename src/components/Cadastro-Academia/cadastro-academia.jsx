@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import { Button} from 'reactstrap';
 
 const styles = theme => ({
     container: {
@@ -141,7 +142,7 @@ class CadastroAcademia extends Component {
                     margin="normal"
                 />
                 <TextField
-                    id="standard-password-input"
+                    id="standard-rua"
                     label="Rua e número"
                     style={{ width: '32%' }}
                     onChange={this.handleChange('rua')} 
@@ -151,7 +152,7 @@ class CadastroAcademia extends Component {
                 />
                 <div className="container" style={{ textAlign: 'center' }}>
                     <TextField
-                        id="standard-password-input"
+                        id="standard-username"
                         label="Username"
                         style={{ width: '20%' }}
                         onChange={this.handleChange('username')} 
@@ -160,7 +161,7 @@ class CadastroAcademia extends Component {
                         margin="normal"
                     />
                     <TextField
-                        id="standard-password-input"
+                        id="standard-password"
                         label="Password"
                         style={{ width: '20%' }}
                         onChange={this.handleChange('password')} 
@@ -169,8 +170,8 @@ class CadastroAcademia extends Component {
                         autoComplete="current-password"
                         margin="normal"
                     />
-                    <button type="submit" className="btn btn-primary btn-block button" 
-                            style={{ marginLeft:'30%', width: '40%', 'marginTop': '2%' }}>Registrar</button>
+                    <Button type="submit" className="btn btn-primary btn-block button" 
+                            style={{ marginLeft:'30%', width: '40%', 'marginTop': '2%' }}>Registrar</Button>
                 </div>
                
 
