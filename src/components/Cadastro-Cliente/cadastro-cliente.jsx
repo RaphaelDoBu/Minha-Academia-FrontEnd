@@ -5,6 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import { Redirect } from 'react-router-dom';
 import NavBar from '../navbar';
 import { Button} from 'reactstrap';
+import '../Cadastro-Cliente/cadastro-cliente.css'
 
 const styles = theme => ({
     container: {
@@ -113,10 +114,10 @@ class CadastroCliente extends Component {
             <div className="row" style={{ paddingTop: '50px' }}>
                 <div className="col"></div>
                 <div className="col">
-                    <div className="card" style={{ width: '65rem', boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)' }}>
-                    <div className="row" style={{ marginLeft: '33%', marginTop:'5%' }}><h2>Dados do(a) Aluno(a)</h2></div>
+                    <div className="card form-cliente">
+                    <div className="row"><h3 className="titulo">Dados do(a) Aluno(a)</h3></div>
 
-                        <div className="card-body" style={{marginLeft:'5%'}}>
+                        <div className="card-body form-aluno">
                             <form  onSubmit={this.handleSubmit} className={classes.container} noValidate autoComplete="off">
                                 
                             <TextField
@@ -198,8 +199,8 @@ class CadastroCliente extends Component {
                                 autoComplete="current-password"
                                 margin="normal"
                             />
-                            <Button type="submit" className="btn btn-primary btn-block button" 
-                                    style={{ marginLeft:'30%', width: '40%', 'marginTop': '2%' }}>Registrar</Button>
+                            <Button type="submit" className="btn btn-primary btn-block button" className="botao"> 
+                                    Registrar</Button>
                         
                             </form>
                         </div>
