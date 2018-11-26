@@ -77,10 +77,12 @@ export default class NavBar extends React.Component {
                   <div className="zoom-nav"><h6 className="navs">  Cadastrar Alunos  </h6></div>
                 </NavLink>
               </NavItem>
-              <div className="zoom-nav">
+              
               <UncontrolledDropdown nav inNavbar style={{color:'white'}}>
+                <div className="zoom-nav">
                 <DropdownToggle nav caret style={{color:'white'}}>
                 </DropdownToggle>
+                </div>
                 <DropdownMenu right>
                   <DropdownItem>
                     <NavLink href="/academia-editar" style={{color:'black'}}>Editar Cadastro</NavLink>
@@ -91,7 +93,6 @@ export default class NavBar extends React.Component {
                   </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
-              </div>
             </Nav>
           </Collapse>
         </Navbar>
