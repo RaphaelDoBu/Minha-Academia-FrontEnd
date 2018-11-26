@@ -1,0 +1,16 @@
+* {
+    box-sizing: border-box;
+}
+
+.zoom-img {
+    transition: transform .2s;
+    width: 1px;
+    height: 1px;
+    margin-left: 4%
+}
+
+.zoom-img:hover {
+    -ms-transform: scale(1.5); /* IE 9 */
+    -webkit-transform: scale(1.5); /* Safari 3-8 */
+    transform: scale(1.5); 
+}

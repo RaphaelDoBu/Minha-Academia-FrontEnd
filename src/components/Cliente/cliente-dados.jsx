@@ -6,6 +6,7 @@ import Modal from 'react-awesome-modal';
 import imagemDetalhes from '../../imagens/baseline-more_vert-24px.svg'
 import imagemEditar from '../../imagens/baseline-edit-24px.svg'
 import imagemPagamento from '../../imagens/baseline-check-24px.svg'
+import '../Cliente/cliente-dados.css'
 
 class ClienteDados extends Component {
 
@@ -130,12 +131,15 @@ class ClienteDados extends Component {
                                 <tr key={cliente.id}>
                                 <td>{cliente.nome}</td>
                                 <td>{cliente.peso} Kg</td>
-                                <td><a onClick={() => this.openModalEditar(cliente)}><img src={imagemEditar} 
-                                        alt="Editar"/></a></td>
-                                <td><a onClick={() => this.openModalDetalhes(cliente)}><img src={imagemDetalhes} 
-                                        alt="Detalhes"/></a></td>
-                                <td><a onClick={() => this.openModalDetalhes(cliente)}><img src={imagemPagamento} 
-                                    alt="Pagamento"/></a></td>
+                                <td><a onClick={() => this.openModalEditar(cliente)}>
+                                    <div className="zoom-img"><img src={imagemEditar} 
+                                        alt="Editar"/></div></a></td>
+                                <td><a onClick={() => this.openModalDetalhes(cliente)}>
+                                    <div className="zoom-img"><img src={imagemDetalhes} 
+                                        alt="Detalhes"/></div></a></td>
+                                <td><a onClick={() => this.openModalDetalhes(cliente)}>
+                                    <div className="zoom-img"><img src={imagemPagamento} 
+                                        alt="Pagamento"/></div></a></td>
                                 </tr>
                                 
                                 ))

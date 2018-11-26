@@ -56,20 +56,28 @@ export default class NavBar extends React.Component {
     return (
       <div>
         <Navbar light expand="md" style={{backgroundColor:'black'}}>
-          <NavbarBrand href="/academia"><h3 className="principal">Minha Academia</h3></NavbarBrand>
+          <NavbarBrand href="/academia">
+            <div className="zoom-nav"><h3 className="principal">Minha Academia</h3></div>
+          </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
                 <NavLink href="/academia" >
-                    <h6 className="navs">Inicio</h6></NavLink>
+                  <div className="zoom-nav"><h6 className="navs">Inicio  </h6></div>
+                </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/alunos"><h6 className="navs"> Alunos</h6></NavLink>
+                <NavLink href="/alunos">
+                  <div className="zoom-nav"><h6 className="navs">  Alunos  </h6></div>
+                </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/matricula"><h6 className="navs"> Cadastrar Alunos</h6></NavLink>
+                <NavLink href="/matricula">
+                  <div className="zoom-nav"><h6 className="navs">  Cadastrar Alunos  </h6></div>
+                </NavLink>
               </NavItem>
+              <div className="zoom-nav">
               <UncontrolledDropdown nav inNavbar style={{color:'white'}}>
                 <DropdownToggle nav caret style={{color:'white'}}>
                 </DropdownToggle>
@@ -83,6 +91,7 @@ export default class NavBar extends React.Component {
                   </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
+              </div>
             </Nav>
           </Collapse>
         </Navbar>
