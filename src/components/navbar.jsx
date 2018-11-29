@@ -28,9 +28,7 @@ export default class NavBar extends React.Component {
   }
 
   exibirLogout(){
-    console.log(this.state.visible)
-
-    if (this.state.visible === true) {
+    if (this.state.visible) {
       return <Logout  closeModal={this.closeModal.bind(this)}></Logout>
     }
   }

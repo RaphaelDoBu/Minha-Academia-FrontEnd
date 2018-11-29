@@ -46,9 +46,7 @@ class ClienteDados extends Component {
     }
   
     exibirModal(){
-        if (this.state.visibleDetalhes === true && this.state.detalhesCliente !== null) {
-            console.log(this.state.visibleDetalhes);
-            console.log(this.state.detalhesCliente);
+        if (this.state.visibleDetalhes && this.state.detalhesCliente !== null) {
             return <ModalDetalhesCliente visibleDetalhes={this.state.visibleDetalhes} 
                     detalhesCliente={this.state.detalhesCliente} 
                     closeModal={this.closeModal.bind(this)}></ModalDetalhesCliente>

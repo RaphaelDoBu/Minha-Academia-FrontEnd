@@ -54,7 +54,6 @@ class CadastroAcademia extends Component {
                 password: this.state.password
         
         };
-        console.log(JSON.stringify(dataToSend))
         let url = 'http://localhost:4005/academia';
 
         fetch(url, {
@@ -65,7 +64,6 @@ class CadastroAcademia extends Component {
             }
         }).then(response => response.status)
             .then(status => {
-                console.log(status)
                 if (status === 200) {
                     this.setState({
                         logged: true,
