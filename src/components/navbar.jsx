@@ -13,7 +13,7 @@ export default class NavBar extends React.Component {
 
     this.state = {
       isOpen: false,
-      visible : false
+      visible : false      
     };
   }
   
@@ -31,7 +31,7 @@ export default class NavBar extends React.Component {
     console.log(this.state.visible)
 
     if (this.state.visible === true) {
-      return <Logout></Logout>
+      return <Logout  closeModal={this.closeModal.bind(this)}></Logout>
     }
   }
 
@@ -47,6 +47,12 @@ export default class NavBar extends React.Component {
     this.setState({
       isOpen: !this.state.isOpen
     });
+  }
+
+  closeModal() {
+    this.setState(() => ({
+        visible: false
+    }))
   }
 
   render() {

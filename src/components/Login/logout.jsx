@@ -23,10 +23,10 @@ class Logout extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-
         localStorage.removeItem("DD101_TOKEN");
         this.setState(() => ({
-            toDashboard: true}))
+            toDashboard: true}));
+            
         localStorage.clear();
     }
 
@@ -37,10 +37,10 @@ class Logout extends Component {
         return (
         <section>
             <Modal visible={this.state.visible} width="20%" height="110" effect="fadeInUp" 
-              onClickAway={() => this.closeModal()}>
+              onClickAway={() => this.pros.closeModal()}>
               <h3 style={{textAlign:"center"}}>Deseja Sair?</h3>
               <div className="col" style={{ marginTop: '10%' }}>
-                <Button onClick={() => this.closeModal()}>Não</Button>
+                <Button onClick={() => this.props.closeModal()}>Não</Button>
                 <Button onClick={this.handleSubmit} style={{ float: 'right' }}>Sim</Button>
               </div>
             </Modal>
